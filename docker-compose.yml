@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  trocr-onnx-ocr:
+    build: .
+    container_name: trocr-onnx-ocr-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        limits:
+          memory: 1G  # 178 MB ağırlığındaki bu optimize model için 1GB RAM sınırı hayli hayli yeterlidir
+    environment:
+      - PYTHONUNBUFFERED=1
